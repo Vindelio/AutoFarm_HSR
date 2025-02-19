@@ -4,7 +4,7 @@ import random as rand
 
 # Run comand with local save location: 
 # (Dubbelcheck if correct)
-# py C:\Users\LAB\Documents\Projects\python\Auto\Auto.py
+# py C:\Users\LAB\Documents\GitHub\AutoFarm_HSR\Auto.py
 
 def Auto():
     time.sleep(1)
