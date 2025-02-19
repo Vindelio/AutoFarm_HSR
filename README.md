@@ -1,5 +1,5 @@
 # AutoFarm_HSR
-Automaticly farms mats and grabs daily's, while you do other stuff
+Automaticly farms mats and grabs daily's (for the character you have selected as build target)
 
 Have HSR or the Hoyo client open under the administrator CMD you use to exsecute the code
 - use: py <your local 'auto.py' filepath>
