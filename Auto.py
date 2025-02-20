@@ -6,6 +6,24 @@ import random as rand
 # (Dubbelcheck if correct)
 # py C:\Users\LAB\Documents\GitHub\AutoFarm_HSR\Auto.py
 
+def waitForPixel(x, y, rc, gc, bc) :     # xy cords of pixel checked, rgb value to check for
+    done = False
+    while done == False:
+        pic = pag.screenshot()
+        r, g, b = pic.getpixel((x, y))
+        if r == rc and g == gc and b == bc:
+                done = True
+        time.sleep(2)
+
+def ca(num):
+    return rand.randint(num-5, num+5)
+
+def click(x, y, dur):
+    if x == None and y == None and dur == None:
+        pag.click()
+    else:
+        pag.click(ca(x), ca(y), duration=dur)
+
 def Auto():
     time.sleep(1)
 
@@ -14,50 +32,33 @@ def Auto():
 
         # Open Star Rail    
         # ------------------------------------
-        pag.click(1450, 840, duration=0.5) # press start button of game
+        click(1450, 840) # press start button of game
         time.sleep(2)
         
-        done = False
-        while done == False:     # First opening click 
-            pic = pag.screenshot()
-            r, g, b = pic.getpixel((1812, 59))
-            if r == 252 and g == 252 and b == 252:
-                    pag.click(rand.randint(300, 1500), rand.randint(450, 750), duration= 1)
-                    done = True
-            time.sleep(2)
-            
-        done = False
-        while done == False:     # Second opening click 
-            pic = pag.screenshot()
-            r, g, b = pic.getpixel((1829, 471))
-            if r == 253 and g == 253 and b == 253:
-                    pag.click(rand.randint(300, 1500), rand.randint(450, 750), duration= 1)
-                    done = True
-            time.sleep(2)
+        waitForPixel(1812, 59, 252, 252, 252)
+        click(rand.randint(300, 1500), rand.randint(450, 750), 1) # first opening click
+        
+        waitForPixel(1829, 471, 253, 253, 253)
+        click(rand.randint(300, 1500), rand.randint(450, 750), 1) # Second opening click 
         # ------------------------------------
 
 
         # Wait for game loading 
         # -------------------------------------
-        done = False
-        while done == False:     
-            pic = pag.screenshot()
-            r, g, b = pic.getpixel((1880, 333))
-            if r == 11 and g == 9 and b == 6:
-                done = True
-            time.sleep(2)
+        waitForPixel(1880, 333, 11, 9, 6)
         # -------------------------------------
         # You are in game, and can start acting
+
 
     match farmType:
         case 1:     # Set peaces
             # opens farm selector
             # ----------------------------------
             pag.hotkey('esc')
-            pag.click(rand.randint(1325, 1335), rand.randint(745, 755), duration=1)
-            pag.click(rand.randint(465, 475), rand.randint(205, 215), duration=1)
-            pag.click(rand.randint(445, 455), rand.randint(845, 855), duration=1)
-            pag.click(rand.randint(1545, 1555), rand.randint(345, 355), duration=1)
+            click(1330, 750, 1)
+            click(470, 210, 1)
+            click(450, 850, 1)
+            click(1550, 350, 1)
             # ----------------------------------
 
 
@@ -78,6 +79,7 @@ def Auto():
             #     pag.click(rand.randint(1195, 1205), rand.randint(945, 955), duration=0.5)
             # ------------------------------------
             
+
         case 2:     # Ornaments
             pag.hotkey('c')
             print("work in progress")
