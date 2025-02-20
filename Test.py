@@ -2,24 +2,46 @@ import pyautogui as pag
 import time
 import random as rand
 
-# py C:\Users\LAB\Documents\Projects\python\Auto\Test.py
+# Run comand with local save location: 
+# (Dubbelcheck if correct)
+# py C:\Users\LAB\Documents\GitHub\AutoFarm_HSR\Test.py
 
-for i in range(20):
-    pic = pag.screenshot()
+def wait(num):
+    time.sleep(num)
 
-    r1, g1, b1 = pic.getpixel((1812, 59))
-    print(r1, g1, b1)
+def waitForPixel(x, y, rc, gc, bc) :     # xy cords of pixel checked, rgb value to check for
+    done = False
+    while done == False:
+        pic = pag.screenshot()
+        r, g, b = pic.getpixel((x, y))
+        if r == rc and g == gc and b == bc:
+                done = True
+        wait(2)
 
-    if r1 == 252 and g1 == 252 and b1 == 252:
-        print("first time to click")
+def ca(num):
+    return rand.randint(num-5, num+5)
 
-    r2, g2, b2 = pic.getpixel((1829, 471))
-    print(r2, g2, b2)
+def click(x, y, dur):
+    if x == None and y == None and dur == None:
+        pag.click()
+    else:
+        pag.click(ca(x), ca(y), duration=dur)
 
-    if r2 == 253 and g2 == 253 and b2 == 253:
-        print("second time to click")
+def press(button):
+    pag.hotkey(button)
 
-    time.sleep(2)
+def drag(x, y, dur, press):
+    pag.dragTo(x, y, dur, button=press)
+
+wait(1)
+pag.hotkey("win", "down")
+wait(1)
+press('esc')
+
+# Test stuff beneath here
+
+
+
 
 
 

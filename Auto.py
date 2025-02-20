@@ -36,6 +36,7 @@ def drag(x, y, dur, press):
 def Auto():
     wait(1)
     pag.hotkey("win", "down")
+    wait(1)
     if withStart == 'y':
 
         # Open Star Rail    
@@ -63,10 +64,10 @@ def Auto():
             # Opens set peace farming
             # ----------------------------------
             press('esc')
-            click(1330, 750, 0.7)
-            click(470, 210, 0.5)
-            click(450, 850, 0.5)
-            click(1550, 350, 0.5)
+            click(1330, 750, 1)
+            click(470, 210, 1)
+            click(450, 850, 1)
+            click(1550, 350, 1)
             click(1650, 980, 1)
             # ----------------------------------
 
@@ -75,9 +76,11 @@ def Auto():
             # ----------------------------------
             click(1290, 70, 1)
             click(1720, 730, 1)
-            pag.moveTo(570, 280, duration=1)
-            drag(570, 630, 1, 'left')
-            click(300, 600, 0.5)
+            for i in range(2):
+                pag.moveTo(500, 800, duration=0.5)
+                drag(500, 280, 1.6, 'left')
+            wait(2)
+            click(270, 880, 2)
             click(1650, 980, 1)
             # ----------------------------------
 
@@ -85,23 +88,31 @@ def Auto():
             # start combat and auto fight 
             # -----------------------------------
             click(1650, 980, 1)
-            waitForPixel(318, 972, 50, 255, 248)
-            click(1760, 50, 1)
+            waitForPixel(318, 972, 50, 255, 248)    # checks if healthbar 1 is on screen, to check if combat is started
+            
+            pic = pag.screenshot()      # Checks if autoplay is on
+            r, g, b = pic.getpixel((1761, 63))
+            if r != 241:
+                click(1760, 50, 1)
+            # -----------------------------------
 
-            waitForPixel(1053, 944, 255, 255, 248)
-            click(1053, 944, 1)
-            waitForPixel(1053, 944, 255, 255, 248)
+
+            # press play again and exit
+            # -----------------------------------
+            empty = False
+            while empty == False:
+                waitForPixel(1053, 944, 255, 255, 248)      # Play again
+                click(1053, 944, 1)
+                wait(2)
+                pic = pag.screenshot()      # Checks if still have energy
+                r, g, b = pic.getpixel((710, 730))
+                if r == 12 and g == 11 and b == 7:
+                    empty = True
+                
+            click(830, 730, 2)
             click(770, 940, 1)
             wait(2)
             press('esc')
-            # ------------------------------------
-
-
-            # click play again
-            # ------------------------------------
-            # for i in range(4):
-            #     time.sleep(150)
-            #     pag.click(rand.randint(1195, 1205), rand.randint(945, 955), duration=0.5)
             # ------------------------------------
             
 
@@ -122,15 +133,16 @@ def Auto():
             print("work in progress")
 
         case 0:
-            print("Nothing was done")
+            print("Nothing was")
 
     if grabDaily == 'y':
+        wait(1)
+        press('esc')
         # Grab assignments
         # ------------------------------------
-        press('esc')
         click(1730, 350, 1)
         click(470, 910, 2)
-        click(1200, 950, 1)
+        click(1200, 970, 2)
         wait(2)
         press('esc')
         # ------------------------------------
@@ -139,22 +151,19 @@ def Auto():
         # Grab interastrial guide daily reward
         # ------------------------------------
         click(1330, 750, 1)
-        done = False
-        while done == False:
-            pic = pag.screenshot()
-            r, g, b = pic.getpixel((356, 844))
-            if r != 209:
-                done = True
-            else:
-                click(420, 830, 0.2)
-            wait(2)
-        click(1610, 310, 0.5)
+        click(380, 210, 1)
+        for i in range(4):
+            click(420, 830, 0.5)
+        wait(2)
         click(1610, 310, 1)
+        click(1610, 310, 2)
+        wait(0.5)
         press('esc')
         # ------------------------------------
 
 
         # Grab Nameless Honor daily reward
+        # ------------------------------------
         click(1470, 610, 1)
         click(960, 70, 1)
         click(1670, 920, 1)
@@ -162,10 +171,9 @@ def Auto():
         click(1440, 910, 1)
         click(1440, 910, 1)
         press('esc')
-
-        # 356, 844, 209
+        wait(0.5)
+        press('esc')
         # ------------------------------------
-        print("work in progress")
     
     if withClose == 'y':
         time.sleep(1)
