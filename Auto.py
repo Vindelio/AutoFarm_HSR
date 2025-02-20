@@ -30,6 +30,9 @@ def click(x, y, dur):
 def press(button):
     pag.hotkey(button)
 
+def drag(x, y, dur, press):
+    pag.dragTo(x, y, dur, button=press)
+
 def Auto():
     wait(1)
     pag.hotkey("win", "down")
@@ -57,23 +60,40 @@ def Auto():
 
     match farmType:
         case 1:     # Set peaces
-            # opens farm selector
+            # Opens set peace farming
             # ----------------------------------
             press('esc')
-            click(1330, 750, 1)
-            click(470, 210, 1)
-            click(450, 850, 1)
-            click(1550, 350, 1)
+            click(1330, 750, 0.7)
+            click(470, 210, 0.5)
+            click(450, 850, 0.5)
+            click(1550, 350, 0.5)
+            click(1650, 980, 1)
+            # ----------------------------------
+
+
+            # Select farm team
+            # ----------------------------------
+            click(1290, 70, 1)
+            click(1720, 730, 1)
+            pag.moveTo(570, 280, duration=1)
+            drag(570, 630, 1, 'left')
+            click(300, 600, 0.5)
+            click(1650, 980, 1)
             # ----------------------------------
 
 
             # start combat and auto fight 
             # -----------------------------------
-            # pag.click(rand.randint(1645, 1655), rand.randint(975, 985), duration=1.5)
-            # time.sleep(1.5)
-            # pag.click()
-            # time.sleep(5)
-            # pag.click(rand.randint(1755, 1765), rand.randint(45, 55), duration=5)
+            click(1650, 980, 1)
+            waitForPixel(318, 972, 50, 255, 248)
+            click(1760, 50, 1)
+
+            waitForPixel(1053, 944, 255, 255, 248)
+            click(1053, 944, 1)
+            waitForPixel(1053, 944, 255, 255, 248)
+            click(770, 940, 1)
+            wait(2)
+            press('esc')
             # ------------------------------------
 
 
@@ -136,6 +156,12 @@ def Auto():
 
         # Grab Nameless Honor daily reward
         click(1470, 610, 1)
+        click(960, 70, 1)
+        click(1670, 920, 1)
+        click(860, 70, 3)
+        click(1440, 910, 1)
+        click(1440, 910, 1)
+        press('esc')
 
         # 356, 844, 209
         # ------------------------------------
