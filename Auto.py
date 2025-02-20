@@ -113,23 +113,25 @@ def Auto():
             click(770, 940, 1)
             wait(2)
             press('esc')
+            wait(2)
+            press('esc')
             # ------------------------------------
             
 
         case 2:     # Ornaments
-            pag.hotkey('c')
+            press('c')
             print("work in progress")
 
         case 3:
-            pag.hotkey('c')
+            press('c')
             print("work in progress")
 
         case 4:
-            pag.hotkey('c')
+            press('c')
             print("work in progress")
 
         case 5:
-            pag.hotkey('c')
+            press('c')
             print("work in progress")
 
         case 0:
