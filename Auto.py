@@ -101,89 +101,89 @@ def Combat():
 
 
 def Farm(farmType):
-        match farmType:
-            case 1:     # Set peaces
-                # Opens set peace farming
-                # ----------------------------------
-                press('esc')
-                click(1330, 750, 1)
-                click(470, 210, 1)
-                click(450, 850, 1)
-                click(1550, 350, 1)
-                click(1650, 980, 1)
-                # ----------------------------------
+    match farmType:
+        case 1:     # Set peaces
+            # Opens set peace farming
+            # ----------------------------------
+            press('esc')
+            click(1330, 750, 1)
+            click(470, 210, 1)
+            click(450, 850, 1)
+            click(1550, 350, 1)
+            click(1650, 980, 1)
+            # ----------------------------------
 
-                # Selects farm team
-                # ----------------------------------
-                TeamSelect()
-                # ----------------------------------
+            # Selects farm team
+            # ----------------------------------
+            TeamSelect()
+            # ----------------------------------
 
-                # Start, replay, and exit combat
-                # ----------------------------------
-                Combat()
-                # ----------------------------------
-                wait(2)
-                press('esc')
-                wait(2)
-                press('esc')
+            # Start, replay, and exit combat
+            # ----------------------------------
+            Combat()
+            # ----------------------------------
+            wait(2)
+            press('esc')
+            wait(2)
+            press('esc')
 
 
-            case 2:     # Ornaments
-                press('c')
-                print("work in progress")
+        case 2:     # Ornaments
+            press('c')
+            print("work in progress")
 
-            case 3:
-                press('c')
-                print("work in progress")
+        case 3:
+            press('c')
+            print("work in progress")
 
-            case 4:
-                press('c')
-                print("work in progress")
+        case 4:
+            press('c')
+            print("work in progress")
 
-            case 5:
-                press('c')
-                print("work in progress")
+        case 5:
+            press('c')
+            print("work in progress")
 
 
 def Daily():
-        wait(1)
-        press('esc')
-        # Grab assignments
-        # ------------------------------------
-        click(1730, 350, 1)
-        click(470, 910, 2)
-        click(1200, 970, 2)
-        wait(2)
-        press('esc')
-        # ------------------------------------
+    wait(1)
+    press('esc')
+    # Grab assignments
+    # ------------------------------------
+    click(1730, 350, 1)
+    click(470, 910, 2)
+    click(1200, 970, 2)
+    wait(2)
+    press('esc')
+    # ------------------------------------
 
 
-        # Grab interastrial guide daily reward
-        # ------------------------------------
-        click(1330, 750, 1)
-        click(380, 210, 1)
-        for i in range(4):
-            click(420, 830, 0.5)
-        wait(2)
-        click(1610, 310, 1)
-        click(1610, 310, 2)
-        wait(0.5)
-        press('esc')
-        # ------------------------------------
+    # Grab interastrial guide daily reward
+    # ------------------------------------
+    click(1330, 750, 1)
+    click(380, 210, 1)
+    for i in range(4):
+        click(420, 830, 0.5)
+    wait(2)
+    click(1610, 310, 1)
+    click(1610, 310, 2)
+    wait(0.5)
+    press('esc')
+    # ------------------------------------
 
 
-        # Grab Nameless Honor daily reward
-        # ------------------------------------
-        click(1470, 610, 1)
-        click(960, 70, 1)
-        click(1670, 920, 1)
-        click(860, 70, 3)
-        click(1440, 910, 1)
-        click(1440, 910, 1)
-        press('esc')
-        wait(0.5)
-        press('esc')
-        # ------------------------------------
+    # Grab Nameless Honor daily reward
+    # ------------------------------------
+    click(1470, 610, 1)
+    click(960, 70, 1)
+    click(1670, 920, 1)
+    click(860, 70, 3)
+    click(1440, 910, 1)
+    click(1440, 910, 1)
+    press('esc')
+    wait(0.5)
+    press('esc')
+    # ------------------------------------
 
 
 def Auto():
