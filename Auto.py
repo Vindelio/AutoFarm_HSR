@@ -60,6 +60,46 @@ def Open():
         # You are in game, and can start acting
 
 
+def TeamSelect():       # Make sure the farming team is at team 7, and the strongest support character is at the top of the list
+    # Select farm team
+    # ----------------------------------
+    click(1290, 70, 1)  # Select team 7
+
+    click(1720, 730, 1) # Select suport character
+    click(1650, 980, 1)
+    # ----------------------------------
+
+
+def Combat():
+    # start combat and auto fight 
+    # -----------------------------------
+    click(1650, 980, 1)
+    waitForPixel(318, 972, 50, 255, 248)    # checks if healthbar 1 is on screen, to check if combat is started
+    
+    pic = pag.screenshot()      # Checks if autoplay is on
+    r, g, b = pic.getpixel((1761, 63))
+    if r != 241:
+        click(1760, 50, 1)
+    # -----------------------------------
+
+
+    # press play again and exit
+    # -----------------------------------
+    empty = False
+    while empty == False:
+        waitForPixel(1053, 944, 255, 255, 248)      # Play again
+        click(1053, 944, 1)
+        wait(2)
+        pic = pag.screenshot()      # Checks if still have energy
+        r, g, b = pic.getpixel((710, 730))
+        if r == 12 and g == 11 and b == 7:
+            empty = True
+        
+    click(830, 730, 2)      # Exit the combat
+    click(770, 940, 1)
+    # ------------------------------------
+
+
 def Farm(farmType):
         match farmType:
             case 1:     # Set peaces
@@ -73,53 +113,20 @@ def Farm(farmType):
                 click(1650, 980, 1)
                 # ----------------------------------
 
-
-                # Select farm team
+                # Selects farm team
                 # ----------------------------------
-                click(1290, 70, 1)
-                click(1720, 730, 1)
-                for i in range(2):
-                    pag.moveTo(500, 800, duration=0.5)
-                    wait(1)
-                    drag(500, 280, 1.7, 'left')
-                wait(2)
-                click(270, 880, 2)
-                click(1650, 980, 1)
+                TeamSelect()
                 # ----------------------------------
 
-
-                # start combat and auto fight 
-                # -----------------------------------
-                click(1650, 980, 1)
-                waitForPixel(318, 972, 50, 255, 248)    # checks if healthbar 1 is on screen, to check if combat is started
-                
-                pic = pag.screenshot()      # Checks if autoplay is on
-                r, g, b = pic.getpixel((1761, 63))
-                if r != 241:
-                    click(1760, 50, 1)
-                # -----------------------------------
-
-
-                # press play again and exit
-                # -----------------------------------
-                empty = False
-                while empty == False:
-                    waitForPixel(1053, 944, 255, 255, 248)      # Play again
-                    click(1053, 944, 1)
-                    wait(2)
-                    pic = pag.screenshot()      # Checks if still have energy
-                    r, g, b = pic.getpixel((710, 730))
-                    if r == 12 and g == 11 and b == 7:
-                        empty = True
-                    
-                click(830, 730, 2)
-                click(770, 940, 1)
+                # Start, replay, and exit combat
+                # ----------------------------------
+                Combat()
+                # ----------------------------------
                 wait(2)
                 press('esc')
                 wait(2)
                 press('esc')
-                # ------------------------------------
-                
+
 
             case 2:     # Ornaments
                 press('c')
@@ -201,7 +208,7 @@ def Auto():
         pag.hotkey('alt', 'f4')
 
 
-farmType = int(input("Input a farm type \n1 : Set peaces \n2 : Ornaments \n3 : talent mats \n4 : level up mats \n5 : exp \n0 : Do nothing \n"))
+farmType = input("Input a farm type \n1 : Set peaces \n2 : Ornaments \n3 : talent mats \n4 : level up mats \n5 : exp \n0 : Do nothing \n")
 withStart = input("Want to open the game y/n \n")
 grabDaily = input("Want to grab daily rewards y/n \n")
 withClose = input("Want to close after script y/n \n")
