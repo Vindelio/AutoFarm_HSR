@@ -238,12 +238,16 @@ def Daily():
     click(1200, 970, 2)
     wait(2)
     press('esc')
+    wait(1)
+    press('esc')
     # ------------------------------------
 
 
     # Grab interastrial guide daily reward
     # ------------------------------------
-    click(1730, 620, 1)
+    pag.keyDown('tab')
+    click(1200, 330)
+    pag.keyUp('tab')
     click(380, 210, 1)
     for i in range(4):
         click(420, 830, 0.5)
@@ -256,16 +260,16 @@ def Daily():
 
 
     # Grab Nameless Honor daily reward
-    # ------------------------------------
-    click(1470, 610, 1)
-    click(960, 70, 1)
-    click(1670, 920, 1)
-    click(860, 70, 3)
-    click(1440, 910, 1)
-    click(1440, 910, 1)
-    press('esc')
-    wait(0.5)
-    press('esc')
+    # ------------------------------------      # Not currently available
+    # click(1470, 610, 1)
+    # click(960, 70, 1)
+    # click(1670, 920, 1)
+    # click(860, 70, 3)
+    # click(1440, 910, 1)
+    # click(1440, 910, 1)
+    # press('esc')
+    # wait(0.5)
+    # press('esc')
     # ------------------------------------
 
 
