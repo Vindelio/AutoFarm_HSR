@@ -9,6 +9,7 @@ import random as rand
 def wait(num):
     time.sleep(num)
 
+
 def waitForPixel(x, y, rc, gc, bc) :     # xy cords of pixel checked, rgb value to check for
     done = False
     while done == False:
@@ -18,8 +19,10 @@ def waitForPixel(x, y, rc, gc, bc) :     # xy cords of pixel checked, rgb value 
                 done = True
         wait(2)
 
+
 def ca(num):
     return rand.randint(num-5, num+5)
+
 
 def click(x, y, dur):
     if x == None and y == None and dur == None:
@@ -27,18 +30,16 @@ def click(x, y, dur):
     else:
         pag.click(ca(x), ca(y), duration=dur)
 
+
 def press(button):
     pag.hotkey(button)
+
 
 def drag(x, y, dur, press):
     pag.dragTo(x, y, dur, button=press)
 
-def Auto():
-    wait(1)
-    pag.hotkey("win", "down")
-    wait(1)
-    if withStart == 'y':
 
+def Open():
         # Open Star Rail    
         # ------------------------------------
         click(1450, 840, 1) # press start button of game
@@ -59,85 +60,85 @@ def Auto():
         # You are in game, and can start acting
 
 
-    match farmType:
-        case 1:     # Set peaces
-            # Opens set peace farming
-            # ----------------------------------
-            press('esc')
-            click(1330, 750, 1)
-            click(470, 210, 1)
-            click(450, 850, 1)
-            click(1550, 350, 1)
-            click(1650, 980, 1)
-            # ----------------------------------
+def Farm(farmType):
+        match farmType:
+            case 1:     # Set peaces
+                # Opens set peace farming
+                # ----------------------------------
+                press('esc')
+                click(1330, 750, 1)
+                click(470, 210, 1)
+                click(450, 850, 1)
+                click(1550, 350, 1)
+                click(1650, 980, 1)
+                # ----------------------------------
 
 
-            # Select farm team
-            # ----------------------------------
-            click(1290, 70, 1)
-            click(1720, 730, 1)
-            for i in range(2):
-                pag.moveTo(500, 800, duration=0.5)
-                drag(500, 280, 1.6, 'left')
-            wait(2)
-            click(270, 880, 2)
-            click(1650, 980, 1)
-            # ----------------------------------
-
-
-            # start combat and auto fight 
-            # -----------------------------------
-            click(1650, 980, 1)
-            waitForPixel(318, 972, 50, 255, 248)    # checks if healthbar 1 is on screen, to check if combat is started
-            
-            pic = pag.screenshot()      # Checks if autoplay is on
-            r, g, b = pic.getpixel((1761, 63))
-            if r != 241:
-                click(1760, 50, 1)
-            # -----------------------------------
-
-
-            # press play again and exit
-            # -----------------------------------
-            empty = False
-            while empty == False:
-                waitForPixel(1053, 944, 255, 255, 248)      # Play again
-                click(1053, 944, 1)
+                # Select farm team
+                # ----------------------------------
+                click(1290, 70, 1)
+                click(1720, 730, 1)
+                for i in range(2):
+                    pag.moveTo(500, 800, duration=0.5)
+                    wait(1)
+                    drag(500, 280, 1.7, 'left')
                 wait(2)
-                pic = pag.screenshot()      # Checks if still have energy
-                r, g, b = pic.getpixel((710, 730))
-                if r == 12 and g == 11 and b == 7:
-                    empty = True
+                click(270, 880, 2)
+                click(1650, 980, 1)
+                # ----------------------------------
+
+
+                # start combat and auto fight 
+                # -----------------------------------
+                click(1650, 980, 1)
+                waitForPixel(318, 972, 50, 255, 248)    # checks if healthbar 1 is on screen, to check if combat is started
                 
-            click(830, 730, 2)
-            click(770, 940, 1)
-            wait(2)
-            press('esc')
-            wait(2)
-            press('esc')
-            # ------------------------------------
-            
+                pic = pag.screenshot()      # Checks if autoplay is on
+                r, g, b = pic.getpixel((1761, 63))
+                if r != 241:
+                    click(1760, 50, 1)
+                # -----------------------------------
 
-        case 2:     # Ornaments
-            press('c')
-            print("work in progress")
 
-        case 3:
-            press('c')
-            print("work in progress")
+                # press play again and exit
+                # -----------------------------------
+                empty = False
+                while empty == False:
+                    waitForPixel(1053, 944, 255, 255, 248)      # Play again
+                    click(1053, 944, 1)
+                    wait(2)
+                    pic = pag.screenshot()      # Checks if still have energy
+                    r, g, b = pic.getpixel((710, 730))
+                    if r == 12 and g == 11 and b == 7:
+                        empty = True
+                    
+                click(830, 730, 2)
+                click(770, 940, 1)
+                wait(2)
+                press('esc')
+                wait(2)
+                press('esc')
+                # ------------------------------------
+                
 
-        case 4:
-            press('c')
-            print("work in progress")
+            case 2:     # Ornaments
+                press('c')
+                print("work in progress")
 
-        case 5:
-            press('c')
-            print("work in progress")
+            case 3:
+                press('c')
+                print("work in progress")
 
-        case 0:
-            print("Nothing was")
+            case 4:
+                press('c')
+                print("work in progress")
 
-    if grabDaily == 'y':
+            case 5:
+                press('c')
+                print("work in progress")
+
+
+def Daily():
         wait(1)
         press('esc')
         # Grab assignments
@@ -176,22 +177,36 @@ def Auto():
         wait(0.5)
         press('esc')
         # ------------------------------------
+
+
+def Auto():
+    wait(1)
+    pag.hotkey("win", "down")
+    wait(1)
+
+    if withStart == 'y':
+        Open()
+        wait(1)
+
+    if (farmType == 1 or farmType == 2 or farmType == 3 or farmType == 4 or farmType == 5):
+        Farm(farmType)
+        wait(1)
+    
+    if grabDaily == 'y':
+        Daily()
+        wait(1)
     
     if withClose == 'y':
         time.sleep(1)
         pag.hotkey('alt', 'f4')
 
-try:
-    farmType = int(input("Input a farm type \n1 : Set peaces \n2 : Ornaments \n3 : talent mats \n4 : level up mats \n5 : exp \n0 : Do nothing \n"))
-    withStart = input("Want to open the game y/n \n")
-    grabDaily = input("Want to grab daily rewards y/n \n")
-    withClose = input("Want to close after script y/n \n")
-    
-    Auto()
-except:
-    print("Error or force exit")
-    exit()
 
+farmType = int(input("Input a farm type \n1 : Set peaces \n2 : Ornaments \n3 : talent mats \n4 : level up mats \n5 : exp \n0 : Do nothing \n"))
+withStart = input("Want to open the game y/n \n")
+grabDaily = input("Want to grab daily rewards y/n \n")
+withClose = input("Want to close after script y/n \n")
+
+Auto()
 print("Done Smoothly")
             
 
