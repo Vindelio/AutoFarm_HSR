@@ -245,8 +245,9 @@ def Daily():
 
     # Grab interastrial guide daily reward
     # ------------------------------------
+    wait(1)
     pag.keyDown('tab')
-    click(1200, 330)
+    click(1200, 330, 0.5)
     pag.keyUp('tab')
     click(380, 210, 1)
     for i in range(4):
