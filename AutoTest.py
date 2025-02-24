@@ -6,6 +6,7 @@ import random as rand
 # (Dubbelcheck if correct)
 # py C:\Users\LAB\Documents\GitHub\AutoFarm_HSR\AutoTest.py
 
+
 def wait(num):
     time.sleep(num)
 
@@ -60,14 +61,12 @@ def Open():
         # You are in game, and can start acting
 
 
-def TeamSelect():
-    wait(1)
-    pag.hotkey("win", "down")
-    wait(1)
+def TeamSelect():       # Make sure the farming team is at team 7, and the strongest support character is at the top of the list
     # Select farm team
     # ----------------------------------
-    click(1290, 70, 1)
-    click(1720, 730, 1)
+    click(1290, 70, 1)  # Select team 7
+
+    click(1720, 730, 1) # Select suport character
     click(1650, 980, 1)
     # ----------------------------------
 
@@ -103,89 +102,177 @@ def Combat():
 
 
 def Farm(farmType):
-        match farmType:
-            case 1:     # Set peaces
-                # Opens set peace farming
-                # ----------------------------------
-                press('esc')
-                click(1330, 750, 1)
-                click(470, 210, 1)
-                click(450, 850, 1)
-                click(1550, 350, 1)
-                click(1650, 980, 1)
-                # ----------------------------------
+    match farmType:
+        case 1:     # Set peaces
 
-                # Selects farm team
-                # ----------------------------------
-                TeamSelect()
-                # ----------------------------------
+            # Opens set peace farming
+            # ----------------------------------
+            press('esc')
+            click(1730, 620, 1)
+            click(470, 210, 1)
+            click(450, 850, 1)
+            click(1550, 350, 1)
+            click(1650, 980, 1)
+            # ----------------------------------
 
-                # Start, replay, and exit combat
-                # ----------------------------------
-                Combat()
-                # ----------------------------------
-                wait(2)
-                press('esc')
-                wait(2)
-                press('esc')
+            # Selects farm team and sup character
+            # ----------------------------------
+            TeamSelect()
+            # ----------------------------------
+
+            # Start, replay, and exit combat
+            # ----------------------------------
+            Combat()
+            # ----------------------------------
+            wait(2)
+            press('esc')
+            wait(2)
+            press('esc')
 
 
-            case 2:     # Ornaments
-                press('c')
-                print("work in progress")
+        case 2:     # Ornaments
 
-            case 3:
-                press('c')
-                print("work in progress")
+            press('c')
+            wait(1)
+            click(1560, 65, 1)
+            print("work in progress")
 
-            case 4:
-                press('c')
-                print("work in progress")
 
-            case 5:
-                press('c')
-                print("work in progress")
+        case 3:     # Talent mats
+
+            # Navigate and click into talent mat farming
+            # ----------------------------------
+            press('c')
+            wait(1)
+            click(1560, 65, 1)
+            click(980, 500, 1)      
+            pag.moveTo(1490, 440, duration=1)
+            pag.dragTo(1490, 900, 1)
+            click(1050, 570, 1)
+            wait(1)
+            for i in range(5):      # Choose 6 rounds
+                click(1850, 900, 0.5)
+            click(1620, 980, 1)
+            # ----------------------------------
+
+            # Selects farm team and sup character
+            # ----------------------------------
+            TeamSelect()
+            # ----------------------------------
+
+            # Start, replay, and exit combat
+            # ----------------------------------
+            Combat()
+            # ----------------------------------
+            wait(2)
+            press('esc')
+
+
+        case 4:     # Level up mats
+            # Navigate and click into level mats
+            # ----------------------------------
+            press('c')
+            wait(1)
+            click(1560, 65, 1)
+            click(960, 790, 1)
+            click(1860, 250, 1)
+            click(580, 520, 1)
+            click(800, 530, 1)
+            wait(1)
+            for i in range(5):
+                pag.scroll(-1000)
+                wait(0.2)
+            click(1080, 640, 1)
+            click(1600, 980, 1)
+            # ----------------------------------
+
+            # Selects farm team and sup character
+            # ----------------------------------
+            TeamSelect()
+            # ----------------------------------
+
+            # Start, replay, and exit combat
+            # ----------------------------------
+            Combat()
+            # ----------------------------------
+            wait(2)
+            press('esc')
+
+
+        case 5:     # Exp
+            # Navigate and click into exp farming
+            # ----------------------------------
+            press('c')
+            wait(1)
+            click(1560, 65, 1)
+            click(980, 430, 1)      
+            pag.moveTo(1490, 440, duration=1)
+            pag.dragTo(1490, 900, 1)
+            click(1100, 630, 1)
+            wait(1)
+            for i in range(5):      # Choose 6 rounds
+                click(1850, 900, 0.5)
+            click(1620, 980, 1)
+            # ----------------------------------
+            
+            # Selects farm team and sup character
+            # ----------------------------------
+            TeamSelect()
+            # ----------------------------------
+
+            # Start, replay, and exit combat
+            # ----------------------------------
+            Combat()
+            # ----------------------------------
+            wait(2)
+            press('esc')
+            
 
 
 def Daily():
-        wait(1)
-        press('esc')
-        # Grab assignments
-        # ------------------------------------
-        click(1730, 350, 1)
-        click(470, 910, 2)
-        click(1200, 970, 2)
-        wait(2)
-        press('esc')
-        # ------------------------------------
+    wait(1)
+    press('esc')
+    # Grab assignments
+    # ------------------------------------
+    click(1730, 350, 1)
+    click(470, 910, 2)
+    click(1200, 970, 2)
+    wait(2)
+    press('esc')
+    wait(1)
+    press('esc')
+    # ------------------------------------
 
 
-        # Grab interastrial guide daily reward
-        # ------------------------------------
-        click(1330, 750, 1)
-        click(380, 210, 1)
-        for i in range(4):
-            click(420, 830, 0.5)
-        wait(2)
-        click(1610, 310, 1)
-        click(1610, 310, 2)
-        wait(0.5)
-        press('esc')
-        # ------------------------------------
+    # Grab interastrial guide daily reward
+    # ------------------------------------
+    wait(1)
+    pag.keyDown('tab')
+    click(1200, 330, 0.5)
+    pag.keyUp('tab')
+    click(380, 210, 1)
+    for i in range(4):
+        click(420, 830, 0.5)
+    wait(2)
+    click(1610, 310, 1)
+    click(1610, 310, 2)
+    wait(0.5)
+    press('esc')
+    # ------------------------------------
 
 
-        # Grab Nameless Honor daily reward
-        # ------------------------------------
-        click(1470, 610, 1)
-        click(960, 70, 1)
-        click(1670, 920, 1)
-        click(860, 70, 3)
-        click(1440, 910, 1)
-        click(1440, 910, 1)
-        press('esc')
-        wait(0.5)
-        press('esc')
-        # ------------------------------------
+    # Grab Nameless Honor daily reward
+    # ------------------------------------      # Not currently available
+    # click(1470, 610, 1)
+    # click(960, 70, 1)
+    # click(1670, 920, 1)
+    # click(860, 70, 3)
+    # click(1440, 910, 1)
+    # click(1440, 910, 1)
+    # press('esc')
+    # wait(0.5)
+    # press('esc')
+    # ------------------------------------
 
 
 def Auto():
@@ -197,7 +284,7 @@ def Auto():
         Open()
         wait(1)
 
-    if (farmType == 1 or farmType == 2 or farmType == 3 or farmType == 4 or farmType == 5):
+    if farmType != 0:
         Farm(farmType)
         wait(1)
     
@@ -206,16 +293,16 @@ def Auto():
         wait(1)
     
     if withClose == 'y':
-        time.sleep(1)
+        wait(1)
         pag.hotkey('alt', 'f4')
 
 
-farmType = input("Input a farm type \n1 : Set peaces \n2 : Ornaments \n3 : talent mats \n4 : level up mats \n5 : exp \n0 : Do nothing \n")
+farmType = int(input("Input a farm type \n1 : Set peaces \n2 : Ornaments \n3 : talent mats \n4 : level up mats \n5 : exp \n0 : Do nothing \n"))
 withStart = input("Want to open the game y/n \n")
 grabDaily = input("Want to grab daily rewards y/n \n")
 withClose = input("Want to close after script y/n \n")
 
-TeamSelect()
+Auto()
 print("Done Smoothly")
             
 
