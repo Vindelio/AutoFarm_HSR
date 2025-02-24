@@ -103,17 +103,18 @@ def Combat():
 def Farm(farmType):
     match farmType:
         case 1:     # Set peaces
+
             # Opens set peace farming
             # ----------------------------------
             press('esc')
-            click(1330, 750, 1)
+            click(1730, 620, 1)
             click(470, 210, 1)
             click(450, 850, 1)
             click(1550, 350, 1)
             click(1650, 980, 1)
             # ----------------------------------
 
-            # Selects farm team
+            # Selects farm team and sup character
             # ----------------------------------
             TeamSelect()
             # ----------------------------------
@@ -129,20 +130,102 @@ def Farm(farmType):
 
 
         case 2:     # Ornaments
+
             press('c')
+            wait(1)
+            click(1560, 65, 1)
             print("work in progress")
 
-        case 3:
-            press('c')
-            print("work in progress")
 
-        case 4:
-            press('c')
-            print("work in progress")
+        case 3:     # Talent mats
 
-        case 5:
+            # Navigate and click into talent mat farming
+            # ----------------------------------
             press('c')
-            print("work in progress")
+            wait(1)
+            click(1560, 65, 1)
+            click(980, 500, 1)      
+            pag.moveTo(1490, 440, duration=1)
+            pag.dragTo(1490, 900, 1)
+            click(1050, 570, 1)
+            wait(1)
+            for i in range(5):      # Choose 6 rounds
+                click(1850, 900, 0.5)
+            click(1620, 980, 1)
+            # ----------------------------------
+
+            # Selects farm team and sup character
+            # ----------------------------------
+            TeamSelect()
+            # ----------------------------------
+
+            # Start, replay, and exit combat
+            # ----------------------------------
+            Combat()
+            # ----------------------------------
+            wait(2)
+            press('esc')
+
+
+        case 4:     # Level up mats
+            # Navigate and click into level mats
+            # ----------------------------------
+            press('c')
+            wait(1)
+            click(1560, 65, 1)
+            click(960, 790, 1)
+            click(1860, 250, 1)
+            click(580, 520, 1)
+            click(800, 530, 1)
+            wait(1)
+            for i in range(5):
+                pag.scroll(-1000)
+                wait(0.2)
+            click(1080, 640, 1)
+            click(1600, 980, 1)
+            # ----------------------------------
+
+            # Selects farm team and sup character
+            # ----------------------------------
+            TeamSelect()
+            # ----------------------------------
+
+            # Start, replay, and exit combat
+            # ----------------------------------
+            Combat()
+            # ----------------------------------
+            wait(2)
+            press('esc')
+
+
+        case 5:     # Exp
+            # Navigate and click into exp farming
+            # ----------------------------------
+            press('c')
+            wait(1)
+            click(1560, 65, 1)
+            click(980, 430, 1)      
+            pag.moveTo(1490, 440, duration=1)
+            pag.dragTo(1490, 900, 1)
+            click(1100, 630, 1)
+            wait(1)
+            for i in range(5):      # Choose 6 rounds
+                click(1850, 900, 0.5)
+            click(1620, 980, 1)
+            # ----------------------------------
+            
+            # Selects farm team and sup character
+            # ----------------------------------
+            TeamSelect()
+            # ----------------------------------
+
+            # Start, replay, and exit combat
+            # ----------------------------------
+            Combat()
+            # ----------------------------------
+            wait(2)
+            press('esc')
+            
 
 
 def Daily():
@@ -160,7 +243,7 @@ def Daily():
 
     # Grab interastrial guide daily reward
     # ------------------------------------
-    click(1330, 750, 1)
+    click(1730, 620, 1)
     click(380, 210, 1)
     for i in range(4):
         click(420, 830, 0.5)
@@ -195,7 +278,7 @@ def Auto():
         Open()
         wait(1)
 
-    if (farmType == 1 or farmType == 2 or farmType == 3 or farmType == 4 or farmType == 5):
+    if farmType != 0:
         Farm(farmType)
         wait(1)
     
@@ -204,11 +287,11 @@ def Auto():
         wait(1)
     
     if withClose == 'y':
-        time.sleep(1)
+        wait(1)
         pag.hotkey('alt', 'f4')
 
 
-farmType = input("Input a farm type \n1 : Set peaces \n2 : Ornaments \n3 : talent mats \n4 : level up mats \n5 : exp \n0 : Do nothing \n")
+farmType = int(input("Input a farm type \n1 : Set peaces \n2 : Ornaments \n3 : talent mats \n4 : level up mats \n5 : exp \n0 : Do nothing \n"))
 withStart = input("Want to open the game y/n \n")
 grabDaily = input("Want to grab daily rewards y/n \n")
 withClose = input("Want to close after script y/n \n")
