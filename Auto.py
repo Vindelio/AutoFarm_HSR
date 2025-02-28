@@ -74,7 +74,7 @@ def Combat():
     # start combat and auto fight 
     # -----------------------------------
     click(1650, 980, 1)
-    waitForPixel(318, 972, 50, 255, 248)    # checks if healthbar 1 is on screen, to check if combat is started
+    waitForPixel(1710, 865, 11, 9, 6)    # checks if healthbar 1 is on screen, to check if combat is started
     
     pic = pag.screenshot()      # Checks if autoplay is on
     r, g, b = pic.getpixel((1761, 63))
@@ -106,12 +106,17 @@ def Farm(farmType):
 
             # Opens set peace farming
             # ----------------------------------
-            press('esc')
-            click(1730, 620, 1)
-            click(470, 210, 1)
-            click(450, 850, 1)
-            click(1550, 350, 1)
-            click(1650, 980, 1)
+            press('c')
+            wait(1)
+            click(1560, 65, 1)
+            click(960, 790, 1) 
+            click(1635, 70, 1)
+            click(1720, 230, 1)
+            click(700, 630, 1)
+            pag.moveTo(1490, 440, duration=1)
+            pag.dragTo(1490, 900, 1)
+            click(1050, 635, 1)
+            click(1600, 980, 1)
             # ----------------------------------
 
             # Selects farm team and sup character
@@ -131,10 +136,20 @@ def Farm(farmType):
 
         case 2:     # Ornaments
 
+            # Opens ornament farming
+            # ----------------------------------
             press('c')
             wait(1)
             click(1560, 65, 1)
-            print("work in progress")
+            click(960, 790, 1) 
+            click(1635, 70, 1)
+            click(1720, 230, 1)
+            click(820, 630, 1)
+            pag.moveTo(1490, 440, duration=1)
+            pag.dragTo(1490, 900, 1)
+            click(1050, 635, 1)
+            
+            # ----------------------------------
 
 
         case 3:     # Talent mats

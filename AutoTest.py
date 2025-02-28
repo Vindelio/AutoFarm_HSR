@@ -303,6 +303,12 @@ grabDaily = input("Want to grab daily rewards y/n \n")
 withClose = input("Want to close after script y/n \n")
 
 Auto()
+
+press('c')
+wait(1)
+click(1560, 65, 1)
+click(980, 500, 1) 
+
 print("Done Smoothly")
             
 
