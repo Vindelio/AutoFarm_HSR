@@ -180,6 +180,8 @@ def Farm(farmType):
             # ----------------------------------
             wait(2)
             press('esc')
+            wait(2)
+            press('esc')
 
 
         case 4:     # Level up mats
@@ -276,16 +278,19 @@ def Daily():
 
 
     # Grab Nameless Honor daily reward
-    # ------------------------------------      # Not currently available
-    # click(1470, 610, 1)
-    # click(960, 70, 1)
-    # click(1670, 920, 1)
-    # click(860, 70, 3)
-    # click(1440, 910, 1)
-    # click(1440, 910, 1)
-    # press('esc')
-    # wait(0.5)
-    # press('esc')
+    # ------------------------------------      
+    wait(1)
+    pag.keyDown('tab')
+    click(750, 230, 0.5)
+    pag.keyUp('tab')
+    click(960, 70, 1)
+    click(1670, 920, 1)
+    click(860, 70, 3)
+    click(1440, 910, 1)
+    click(1440, 910, 1)
+    press('esc')
+    wait(1)
+    press('esc')
     # ------------------------------------
 
 
