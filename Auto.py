@@ -306,10 +306,10 @@ def Auto():
         Daily()
         wait(1)
     
-    if withClose == 'y':
+    if withClose == 'y' or withClose == 'yy':
         wait(1)
         pag.hotkey('alt', 'f4')
-
+        
 
 farmType = int(input("Input a farm type \n1 : Set peaces \n2 : Ornaments \n3 : talent mats \n4 : level up mats \n5 : exp \n0 : Do nothing \n"))
 withStart = input("Want to open the game y/n \n")
@@ -318,7 +318,16 @@ withClose = input("Want to close after script y/n \n")
 
 Auto()
 print("Done Smoothly")
-            
+
+
+if withClose == 'yy':
+            wait(10)
+            pag.hotkey('alt', 'f4')
+            wait(2)
+            pag.hotkey('alt', 'f4')
+            click(1155, 360, 1)
+            click(1100, 375, 0.5)
+            click(980, 475, 0.5)
 
         
 
